@@ -10,16 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+//Define Properties for sumNum, thisis the post added number
+    var prevSumNum = 0
+    var sumNum = 0
+    var enterTxtInt = 0
+    
+//Outlet - Assign Var
+    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var enterTxt: UITextField!
+    @IBOutlet weak var calcTxt: UILabel!
+    
+/*-- Action
+ When the add button is pressed, calcTxt should add numbers
+     --*/
+    @IBAction func addBtnAction(sender: UIButton) {
+        if enterTxt.text != nil && enterTxt.text != "" {
+            enterTxtInt = Int(enterTxt.text!)!
+            sumNum = enterTxtInt + prevSumNum
+            
+            calcTxt.text = "\(prevSumNum) + \(enterTxtInt) = \(sumNum)"
+            
+            prevSumNum = sumNum
+            
+        }
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
-
